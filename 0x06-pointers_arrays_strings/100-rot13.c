@@ -1,38 +1,29 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
-* rot13 - encodes a string using rot13 encryption
-* @s: a pointer given by main
-*
-* Description: change all alpha characters by rot13 rules
-* Return: returns the s pointer
-*/
-
+ * rot13 - encodes a string in rot13
+ * @s: string to be encoded
+ *
+ * Return: the resulting string
+ */
 char *rot13(char *s)
 {
-	int i = 0;
-	int j;
-	int begin[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A',
-'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
-'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-	int end[] = {'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y',
-'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'N', 'O',
-'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C', 'D', 'E',
-'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'};
+	int i, j;
 
-	while (s[i] != 0)
+	char a[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char b[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		for (j = 0; j < 52; j++)
+		for (j = 0; a[j] != '\0'; j++)
 		{
-			if (s[i] == begin[j])
+			if (s[i] == a[j])
 			{
-				s[i] = end[j];
+				s[i] = b[j];
 				break;
 			}
-
 		}
-		i++;
 	}
+
 	return (s);
 }
